@@ -98,7 +98,7 @@ $ podman run --privileged=true --network=host --name=wpa_supplicant-udmpro -v /m
 
 * Connect the ONT to Port 9 (WAN) on your UDM Pro
 * Power cycle ONT
-* start container
+* ssh to the UDM Pro & start the container
 
 ```
 $ podman start wpa_supplicant-udmpro
@@ -112,3 +112,11 @@ If you are having issues connecting after starting your docker container, the fi
 ```
 $ docker logs -f wpa_supplicant-udmpro
 ```
+
+### notes
+The container will have to be re-started each time you reboot your UDM pro
+
+```
+$ podman start wpa_supplicant-udmpro
+````
+
