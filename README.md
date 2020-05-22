@@ -17,7 +17,7 @@ https://github.com/pbrah/att
 
 
 
-# 1. Decode Credentials
+# 1. decode credentials
 ### Credit: devicelocksmith
 
 Download decoder v1.0.4: win, linux, mac
@@ -71,7 +71,7 @@ $ cp -arfv /tmp/*pem /tmp/wpa_supplicant.conf /mnt/data/podman/wpa_supplicant/
 ```
 
 
-# 4. Update the wpa_supplicant.conf files
+# 4. update the wpa_supplicant.conf files
 ### Credit: fryjr82 & pbrah
 
 Do not run these more than once or you will end up with incorrect paths.
@@ -84,7 +84,7 @@ $ sed -i 's,client_cert=",client_cert="/etc/wpa_supplicant/conf/,g' /mnt/data/po
 $ sed -i 's,private_key=",private_key="/etc/wpa_supplicant/conf/,g' /mnt/data/podman/wpa_supplicant/wpa_supplicant.conf
 ```
 
-# 5. Run the wpa_supplicant podman container 
+# 5. run the wpa_supplicant podman container 
 ### Credit: fryjr82 & pbrah
 
 the podman run command below assumes you are using port 9 WAN.  If not, adjust accordingly.
@@ -93,10 +93,10 @@ the podman run command below assumes you are using port 9 WAN.  If not, adjust a
 $ podman run --privileged=true --network=host --name=wpa_supplicant-udmpro -v /mnt/data/podman/wpa_supplicant/:/etc/wpa_supplicant/conf/ --log-driver=k8s-file --restart=on-failure -detach -ti pbrah/wpa_supplicant-udmpro:v1.0 -Dwired -ieth8 -c/etc/wpa_supplicant/conf/wpa_supplicant.conf
 ```
 
-# 6. Connection
+# 6. connecting & starting
 ### Credit: GiulianoM
 
-* Connect the ONT to the Port 9 (WAN) on your UDM Pro
+* Connect the ONT to Port 9 (WAN) on your UDM Pro
 * Power cycle ONT
 * start container
 
