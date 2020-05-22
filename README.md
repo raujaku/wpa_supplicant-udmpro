@@ -43,15 +43,13 @@ Download decoder v1.0.4: win, linux, mac
 ```
 $ scp -r *.pem root@192.168.1.1:/tmp/
 
-    root@192.168.1.1
-
     password:(YOUR PASSWORD)
 
-    CA_001E46-xxxx.pem                                                          100% 3926     3.8KB/s   00:00
+    CA_001E46-****.pem                                                          100% 3926     3.8KB/s   00:00
 
-    Client_001E46-xxxx.pem                                                      100% 1119     1.1KB/s   00:00
+    Client_001E46-****.pem                                                      100% 1119     1.1KB/s   00:00
 
-    PrivateKey_PKCS1_001E46-xxxx.pem                                            100%  887     0.9KB/s   00:00
+    PrivateKey_PKCS1_001E46-****.pem                                            100%  887     0.9KB/s   00:00
 
 $ scp -r wpa_supplicant.conf root@192.168.1.1:/tmp/
 
