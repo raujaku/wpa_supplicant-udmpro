@@ -31,7 +31,7 @@ Download decoder v1.0.4: win, linux, mac
 
 * You should get a file like this: EAP-TLS_8021x_****.tar.gz
 
-* unzip the tarball and you should get a file like this:EAP-TLS_8021x_****.tar
+* unzip the tarball and you should get a file like this: EAP-TLS_8021x_****.tar
 
 * unzip the .tar file and you should get your .perm files and your wpa_supplicant.conf file
 
