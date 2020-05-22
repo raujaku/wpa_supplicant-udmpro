@@ -98,6 +98,12 @@ $ podman run --privileged=true --network=host --name=wpa_supplicant-udmpro -v /m
 
 * Connect the ONT to the Port 9 (WAN) on your UDM Pro
 * Power cycle ONT
+* start container
+
+```
+$ podman start wpa_supplicant-udmpro
+```
+
 * wait 
 
 ## troubleshooting
