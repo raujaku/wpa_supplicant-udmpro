@@ -60,7 +60,7 @@ $ scp -r wpa_supplicant.conf root@192.168.1.1:/tmp/
 
 
 # 3. ssh to the UDM Pro
-### Credit: fryjr82
+### Credit: fryjr82 & pbrah
 
 create a directory for the certs and wpa_supplicant.conf in the podman directory then copy the files over.
 
@@ -72,7 +72,7 @@ $ cp -arfv /tmp/*pem /tmp/wpa_supplicant.conf /mnt/data/podman/wpa_supplicant/
 
 
 # 4. Update the wpa_supplicant.conf files
-### Credit: fryjr82
+### Credit: fryjr82 & pbrah
 
 Do not run these more than once or you will end up with incorrect paths.
 
@@ -85,7 +85,7 @@ $ sed -i 's,private_key=",private_key="/etc/wpa_supplicant/conf/,g' /mnt/data/po
 ```
 
 # 5. Run the wpa_supplicant podman container 
-### Credit: fryjr82
+### Credit: fryjr82 & pbrah
 
 the podman run command below assumes you are using port 9 WAN.  If not, adjust accordingly.
 
@@ -101,6 +101,7 @@ $ podman run --privileged=true --network=host --name=wpa_supplicant-udmpro -v /m
 * wait 
 
 ## troubleshooting
+### Credit: pbrah
 If you are having issues connecting after starting your docker container, the first thing you should do is check your docker container logs.
 ```
 $ docker logs -f wpa_supplicant-udmpro
