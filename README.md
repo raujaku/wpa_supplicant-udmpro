@@ -1,5 +1,5 @@
 # wpa_supplicant for UDM Pro
-## For 1.7
+## For 1.7.*
 ### ALL CREDIT TO PBRAH, GiulianoM, & fryjr82 
 
 overview
@@ -56,7 +56,8 @@ $ scp -r wpa_supplicant.conf root@192.168.1.1:/tmp/
 ```
 
 
-# 3. ssh to the UDM Pro, create a directory for the certs and wpa_supplicant.conf in the podman directory then copy the files over.
+# 3. ssh to the UDM Pro 
+create a directory for the certs and wpa_supplicant.conf in the podman directory then copy the files over.
 
 ```
 $ mkdir /mnt/data/podman/wpa_supplicant/
@@ -65,19 +66,28 @@ $ cp -arfv /tmp/*pem /tmp/wpa_supplicant.conf /mnt/data/podman/wpa_supplicant/
 ```
 
 
-# 4. Update the wpa_supplicant.conf to reflect the correct paths for our container.  **Do not run these more than once or you will end up with incorrect paths.**
+# 4. Update the wpa_supplicant.confiles
+Do not run these more than once or you will end up with incorrect paths.
 
 ```
 $ sed -i 's,ca_cert=",ca_cert="/etc/wpa_supplicant/conf/,g' /mnt/data/podman/wpa_supplicant/wpa_supplicant.conf
+
 $ sed -i 's,client_cert=",client_cert="/etc/wpa_supplicant/conf/,g' /mnt/data/podman/wpa_supplicant/wpa_supplicant.conf
+
 $ sed -i 's,private_key=",private_key="/etc/wpa_supplicant/conf/,g' /mnt/data/podman/wpa_supplicant/wpa_supplicant.conf
 ```
 
-# 5. Run the wpa_supplicant podman container, the podmanr run command below assumes you are using port 9 WAN.  If not, adjust accordingly.
+# 5. Run the wpa_supplicant podman container 
+the podman run command below assumes you are using port 9 WAN.  If not, adjust accordingly.
 
 ```
 $ podman run --privileged=true --network=host --name=wpa_supplicant-udmpro -v /mnt/data/podman/wpa_supplicant/:/etc/wpa_supplicant/conf/ --log-driver=k8s-file --restart=on-failure -detach -ti pbrah/wpa_supplicant-udmpro:v1.0 -Dwired -ieth8 -c/etc/wpa_supplicant/conf/wpa_supplicant.conf
 ```
+
+# 6. Connection
+Connect the ONT to the Port 9 (WAN) on your UDM Pro
+Power cycle ONT
+wait 
 
 ## troubleshooting
 If you are having issues connecting after starting your docker container, the first thing you should do is check your docker container logs.
