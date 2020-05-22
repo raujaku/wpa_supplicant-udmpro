@@ -106,14 +106,14 @@ $ podman start wpa_supplicant-udmpro
 
 * wait 
 
-## troubleshooting
+## *troubleshooting
 ### Credit: pbrah
 If you are having issues connecting after starting your docker container, the first thing you should do is check your docker container logs.
 ```
 $ docker logs -f wpa_supplicant-udmpro
 ```
 
-### notes
+### **notes
 The container will have to be re-started each time you reboot your UDM pro
 
 ```
