@@ -1,7 +1,7 @@
 # wpa_supplicant for UDM Pro
 ## For 1.7.*
  
- This is just a collection of everyones ideas and code which makes WPA_SUPPLICANT work on 1.7.*
+### This is just a collection of everyones ideas and code which makes WPA_SUPPLICANT work on 1.7.*
  
 *** FROM pbrah***
 
@@ -25,7 +25,7 @@ Download decoder v1.0.4: win, linux, mac
 [Decoder](https://www.devicelocksmith.com/2018/12/eap-tls-credentials-decoder-for-nvg-and.html)
 
 
-* ListCopy mfg.dat, attroot****.der,& attsubca****.der files to the same location as mfg_dat_decode.
+* Copy mfg.dat, attroot****.der,& attsubca****.der files to the same location as mfg_dat_decode.
 
 * Run mfg_dat_decode. 
 
@@ -71,7 +71,7 @@ $ cp -arfv /tmp/*pem /tmp/wpa_supplicant.conf /mnt/data/podman/wpa_supplicant/
 ```
 
 
-# 4. Update the wpa_supplicant.confiles
+# 4. Update the wpa_supplicant.conf files
 ### Credit: fryjr82
 
 Do not run these more than once or you will end up with incorrect paths.
@@ -96,9 +96,9 @@ $ podman run --privileged=true --network=host --name=wpa_supplicant-udmpro -v /m
 # 6. Connection
 ### Credit: GiulianoM
 
-Connect the ONT to the Port 9 (WAN) on your UDM Pro
-Power cycle ONT
-wait 
+* Connect the ONT to the Port 9 (WAN) on your UDM Pro
+* Power cycle ONT
+* wait 
 
 ## troubleshooting
 If you are having issues connecting after starting your docker container, the first thing you should do is check your docker container logs.
