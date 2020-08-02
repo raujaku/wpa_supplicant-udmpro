@@ -1,6 +1,5 @@
-# wpa_supplicant for UDM Pro
+# wpa_supplicant for UDM Pro currently on 1.7.2
 ## For 1.7*
-### currently on 1.7.2
  
 ### This is just a collection of everyones ideas and code which makes WPA_SUPPLICANT work on 1.7.*
  
