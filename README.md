@@ -89,6 +89,8 @@ $ sed -i 's,private_key=",private_key="/etc/wpa_supplicant/conf/,g' /mnt/data/po
 $ docker pull pbrah/wpa_supplicant-udmpro:v1.0
 ````
 the podman run command below assumes you are using port 9 WAN.  If not, adjust accordingly.
+
+````
 $ podman run --privileged=true --network=host --name=wpa_supplicant-udmpro -v /mnt/data/podman/wpa_supplicant/:/etc/wpa_supplicant/conf/ --log-driver=k8s-file --restart=on-failure -detach -ti pbrah/wpa_supplicant-udmpro:v1.0 -Dwired -ieth8 -c/etc/wpa_supplicant/conf/wpa_supplicant.conf
 ```
 
