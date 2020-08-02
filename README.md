@@ -38,7 +38,7 @@ Download decoder v1.0.4: win, linux, mac
 
 
 
-# 2.  scp your certs and wpa_supplicant.conf to the UDM Pro
+# 2.  SCP your certs and wpa_supplicant.conf to the UDM Pro
 ### Credit: pbrah
 ```
 $ scp -r *.pem root@192.168.1.1:/tmp/
@@ -57,7 +57,7 @@ $ scp -r wpa_supplicant.conf root@192.168.1.1:/tmp/
 ```
 
 
-# 3. ssh to the UDM Pro
+# 3. SSH to the UDM Pro
 ### Credit: fryjr82 & pbrah
 
 create a directory for the certs and wpa_supplicant.conf in the podman directory then copy the files over.
@@ -82,12 +82,13 @@ $ sed -i 's,client_cert=",client_cert="/etc/wpa_supplicant/conf/,g' /mnt/data/po
 $ sed -i 's,private_key=",private_key="/etc/wpa_supplicant/conf/,g' /mnt/data/podman/wpa_supplicant/wpa_supplicant.conf
 ```
 
-# 5. run the wpa_supplicant podman container 
+# 5. pull and run the wpa_supplicant podman container 
 ### Credit: fryjr82 & pbrah
 
-the podman run command below assumes you are using port 9 WAN.  If not, adjust accordingly.
-
 ```
+$ docker pull pbrah/wpa_supplicant-udmpro:v1.0
+````
+the podman run command below assumes you are using port 9 WAN.  If not, adjust accordingly.
 $ podman run --privileged=true --network=host --name=wpa_supplicant-udmpro -v /mnt/data/podman/wpa_supplicant/:/etc/wpa_supplicant/conf/ --log-driver=k8s-file --restart=on-failure -detach -ti pbrah/wpa_supplicant-udmpro:v1.0 -Dwired -ieth8 -c/etc/wpa_supplicant/conf/wpa_supplicant.conf
 ```
 
@@ -111,10 +112,27 @@ If you are having issues connecting after starting your docker container, the fi
 $ docker logs -f wpa_supplicant-udmpro
 ```
 
-### **notes
-The container will have to be re-started each time you reboot your UDM pro
+# 7. Make the docker auto restart
+### Credit: boostchicken
+
+SSH into your udmpro
 
 ```
-$ podman start wpa_supplicant-udmpro
+$ unifi-os shell
+
+$ curl -L https://raw.githubusercontent.com/boostchicken/udm-utilities/master/on-boot-script/packages/udm-boot_1.0.1-1_all.deb -o udm-boot_1.0.1-1_all.deb
+
+$ dpkg -i udm-boot_1.0.1-1_all.deb
+
+$ exit
 ````
 
+create a shell script to run with on-boot-script at /mnt/data/on_boot.d
+````
+$ vi /mnt/data/on_boot.d/10-wpa_supplicant.sh
+````
+Inside of your text eidtor type..
+````
+podman start wpa_supplicant-udmpro
+````
+save & exit.
