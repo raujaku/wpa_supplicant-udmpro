@@ -115,7 +115,7 @@ If you are having issues connecting after starting your docker container, the fi
 $ docker logs -f wpa_supplicant-udmpro
 ```
 
-# 7. Make the docker auto restart
+# 7. Make the docker container auto restart
 ### Credit: boostchicken
 
 SSH into your udmpro
