@@ -130,7 +130,7 @@ $ dpkg -i udm-boot_1.0.1-1_all.deb
 $ exit
 ````
 
-create a shell script to run with on-boot-script at /mnt/data/on_boot.d
+create a shell script with your text editor (im using Vim) to run with on-boot-script at /mnt/data/on_boot.d
 ````
 $ vi /mnt/data/on_boot.d/10-wpa_supplicant.sh
 ````
