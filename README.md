@@ -134,7 +134,7 @@ create a shell script with your text editor (im using Vim) to run with on-boot-s
 ````
 $ vi /mnt/data/on_boot.d/10-wpa_supplicant.sh
 ````
-Inside of your text eidtor type..
+Inside of your text editor type..
 ````
 podman start wpa_supplicant-udmpro
 ````
